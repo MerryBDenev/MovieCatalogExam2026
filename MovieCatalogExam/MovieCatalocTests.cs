@@ -14,7 +14,7 @@ namespace MovieCatalogExam
     {
         private RestClient client;
         private const string BaseUrl = "http://144.91.123.158:5000";
-        private const string StaticTocken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKd3RTZXJ2aWNlQWNjZXNzVG9rZW4iLCJqdGkiOiI2MzM3OTBhYi03M2NjLTQzNWUtOWE1NS0yMmYyZjhmMDEzMzUiLCJpYXQiOiIwNC8xOC8yMDI2IDA2OjA1OjE3IiwiVXNlcklkIjoiYmY5MDc2ZTctOTY5Mi00ZWEzLTYyMjAtMDhkZTc2OTcxYWI5IiwiRW1haWwiOiJNZXJyeWJEMkBkbXguY29tIiwiVXNlck5hbWUiOiJNZXI0eUJkIiwiZXhwIjoxNzc2NTEzOTE3LCJpc3MiOiJNb3ZpZUNhdGFsb2dfQXBwX1NvZnRVbmkiLCJhdWQiOiJNb3ZpZUNhdGFsb2dfV2ViQVBJX1NvZnRVbmkifQ.PdwOoYl6m-2KlUKT-kPYdFQClf7hUoamWixajbZ6EWo";
+        private const string StaticToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKd3RTZXJ2aWNlQWNjZXNzVG9rZW4iLCJqdGkiOiI2MzM3OTBhYi03M2NjLTQzNWUtOWE1NS0yMmYyZjhmMDEzMzUiLCJpYXQiOiIwNC8xOC8yMDI2IDA2OjA1OjE3IiwiVXNlcklkIjoiYmY5MDc2ZTctOTY5Mi00ZWEzLTYyMjAtMDhkZTc2OTcxYWI5IiwiRW1haWwiOiJNZXJyeWJEMkBkbXguY29tIiwiVXNlck5hbWUiOiJNZXI0eUJkIiwiZXhwIjoxNzc2NTEzOTE3LCJpc3MiOiJNb3ZpZUNhdGFsb2dfQXBwX1NvZnRVbmkiLCJhdWQiOiJNb3ZpZUNhdGFsb2dfV2ViQVBJX1NvZnRVbmkifQ.PdwOoYl6m-2KlUKT-kPYdFQClf7hUoamWixajbZ6EWo";
         private const string LoginEmail = "MerrybD2@dmx.com";
         private const string LoginPassword = "123456789";
         private static string movieId;
@@ -23,9 +23,9 @@ namespace MovieCatalogExam
         public void Setup()
         {
             string jwtToken;
-            if (!string.IsNullOrWhiteSpace(StaticTocken))
+            if (!string.IsNullOrWhiteSpace(StaticToken))
             {
-                jwtToken = StaticTocken;
+                jwtToken = StaticToken;
             }
             else
             {
@@ -90,7 +90,7 @@ namespace MovieCatalogExam
 
         [Order(2)]
         [Test]
-        public void EditLstCreatedMovie_ShouldReturnSuccess()
+        public void EditLastCreatedMovie_ShouldReturnSuccess()
         {
             var editLastMovie = new MovieDTO
             {
@@ -126,7 +126,7 @@ namespace MovieCatalogExam
         [Test]
         public void DeleteLastMovie_ShouldReturnSuccess()
         {
-            RestRequest request = new RestRequest("/api/Movie/Delete/", Method.Delete);
+            RestRequest request = new RestRequest("/api/Movie/Delete", Method.Delete);
 
             request.AddQueryParameter("movieId", movieId);
 
